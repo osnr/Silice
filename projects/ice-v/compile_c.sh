@@ -4,8 +4,12 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 export PATH=$PATH:$DIR/../../tools/fpga-binutils/mingw32/bin/
 
 if ! type "riscv32-unknown-elf-as" > /dev/null; then
-  echo "defaulting to riscv64-linux"
-  ARCH="riscv64-linux"
+  if ! type "riscv64-unknown-elf-as" > /dev/null; then
+    echo "defaulting to riscv64-linux"
+    ARCH="riscv64-linux"
+  else
+    ARCH="riscv64-unknown"
+  fi
 else
   ARCH="riscv32-unknown"
 fi
