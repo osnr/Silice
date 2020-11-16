@@ -28,7 +28,8 @@ yosys gtkwave git gcc g++ make cmake pkg-config uuid uuid-dev
 Install the packages listed in the Linux section above (except gcc,
 g++, other builtin packages). You might need to clone and build
 `icestorm`, `prjtrellis`, `yosys`, and `verilator` from source to get
-up-to-date versions; the versions in Homebrew may be a bit old.
+up-to-date versions; the versions in Homebrew may be a bit old. You'll
+also need `python3` installed.
 
 Then:
 
@@ -43,7 +44,14 @@ cd build-silice
 
 cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../..
 make -j16 install
+
+pip3 install termcolor
+pip3 install edalize
 ```
+
+After it's compiled, add the `bin` subdirectory of this repository to
+your PATH. Then you should be able to run the `silice` and
+`silice-make.py` commands.
 
 ## Windows
 
